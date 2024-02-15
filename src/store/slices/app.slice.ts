@@ -2,14 +2,19 @@ import {createSlice} from "@reduxjs/toolkit";
 import {getAllBooks} from "../actions/app.action.ts";
 
 export interface IBook {
-  id: number,
-  categories?: any,
-  description?: string,
-  images?: any,
-  list_price: number,
-  name: string,
-  original_price: number,
-  isHidden: boolean
+  id: number;
+  categories?: any;
+  description?: string;
+  images?: any;
+  list_price: number;
+  name: string;
+  original_price: number;
+  isHidden: boolean;
+  rating_average: number;
+  quantity_sold: {
+    text: string,
+    value: number
+  }
 }
 export interface AppSliceState {
   isLoading?: boolean,
