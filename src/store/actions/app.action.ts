@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const getAllBooks = createAsyncThunk('getAll-book', async (_, thunkAPI) => {
   try {
-    const {data} = await axios.get('https://h5ltj4-8080.csb.app/books');
+    const {data} = await axios.get('https://86yfl7-8080.csb.app/books');
+    console.log(data)
     return data
   } catch (e) {
     console.log(e)

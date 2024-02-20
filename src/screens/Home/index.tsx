@@ -4,7 +4,6 @@ import FilterSection from "../../components/Filter";
 
 const Home = () => {
   const {books} = useAppSelector(state => state.app);
-
   return (
     <div className='row justify-content-center'>
       <div className='col-lg-2 col-md-3'>

@@ -2,6 +2,7 @@ import {IBook} from "../../store/slices/app.slice.ts";
 import {Rate} from "antd";
 import {colors} from "../../contants/theme/colors.ts";
 import {currencyFormat} from "../../utils";
+import {useNavigate} from "react-router-dom";
 
 interface Image {
   base_url: string
@@ -13,9 +14,13 @@ interface IBookProps {
 }
 
 const BookItem: React.FC<IBookProps> = ({image, book}) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/details/${book.id}`)
+  }
   const base_url = image[0]?.base_url
   return (
-    <div className='col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-3'>
+    <div onClick={onClick} className='col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-3'>
       <div className="card border-0" style={{ height: '300px'}}>
         <img src={base_url} className="card-img-top object-fit-cover" alt="..." height={120}/>
         <div className="row card-body align-content-between">

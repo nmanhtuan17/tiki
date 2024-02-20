@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {getAllBooks} from "../actions/app.action.ts";
 
 export interface IBook {
-  id: number;
+  id: number | string;
   categories?: any;
   description?: string;
   images?: any;
