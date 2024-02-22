@@ -1,4 +1,9 @@
+import {useState} from "react";
+
 export const useFilter = () => {
+  const [type, setType] = useState();
+  const [suplier, setSuplier] = useState();
+  const [rate, setRate] = useState();
 
   const sections = [
     {

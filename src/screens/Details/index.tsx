@@ -10,15 +10,15 @@ const Details = () => {
   const book  = books.find((item) => item.id === id );
 
   return (
-    <div className='row justify-content-center mb-5'>
-      <div className='col-lg-4 col-md-4'>
+    <div className='row mb-5'>
+      <div className='col-lg-4 col-md-12 p-0'>
         <MainSection images={book?.images} />
       </div>
-      <div className='text-white row align-items-center col-lg-5 col-md-5'>
-        <DescriptionSection />
+      <div className='text-white col-lg-5 col-md-12 p-0'>
+        <DescriptionSection book={book} />
       </div>
-      <div className='align-items-center col-lg-3 col-md-3'>
-        <PriceSection />
+      <div className='align-items-center col-lg-3 col-md-12 p-0'>
+        <PriceSection book={book} />
       </div>
     </div>
   )

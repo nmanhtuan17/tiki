@@ -14,7 +14,9 @@ export interface IBook {
   quantity_sold: {
     text: string,
     value: number
-  }
+  };
+  authors?: any;
+  specifications?: any;
 }
 export interface AppSliceState {
   isLoading?: boolean,

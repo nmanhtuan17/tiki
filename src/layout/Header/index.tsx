@@ -1,10 +1,11 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHome, faFaceSmileWink, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {Divider, Input} from "antd";
 import {colors} from "../../contants/theme/colors.ts";
 
 const Header = () => {
+  const location = useLocation();
   return (
     <div className='d-flex'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary flex-fill">
@@ -34,13 +35,13 @@ const Header = () => {
             </div>
             <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/home">
-                  <FontAwesomeIcon icon={faHome}/>
-                  <span className='ms-1'>Trang chủ</span>
+                <Link className="nav-link" aria-current="page" to="/">
+                  <FontAwesomeIcon icon={faHome} color={location.pathname === '/' ? colors.red : undefined}/>
+                  <span className={`ms-1`} style={{color: location.pathname === '/' ? colors.red : undefined}}>Trang chủ</span>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/home">
+                <Link className="nav-link" to="/">
                   <FontAwesomeIcon icon={faFaceSmileWink}/>
                   <span className='ms-1'>Tài khoản</span>
                 </Link>

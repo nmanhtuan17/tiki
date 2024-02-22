@@ -11,7 +11,6 @@ function App() {
   }
   useEffect(() => {
     getBook();
-    console.log('get---')
   })
   return (
     <MainNavigation/>

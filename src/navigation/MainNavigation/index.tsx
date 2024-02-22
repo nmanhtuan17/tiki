@@ -8,7 +8,7 @@ function MainNavigation() {
   return (
     <Routes>
       <Route path='/' element={<RootLayout />}>
-        <Route path='/home' element={<Home />}/>
+        <Route index element={<Home />}/>
         <Route path='/details/:id' element={<Details />}/>
       </Route>
       {/*<Route path='/sign-in' element={<Login />}/>*/}
