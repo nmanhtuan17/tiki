@@ -1,11 +1,13 @@
 import {Link, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHome, faFaceSmileWink, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
-import {Divider, Input} from "antd";
+import {Badge, Divider, Input} from "antd";
 import {colors} from "../../contants/theme/colors.ts";
+import {store, useAppSelector} from "../../store";
 
 const Header = () => {
   const location = useLocation();
+  const {cart} = useAppSelector(state => state.cart)
   return (
     <div className='d-flex'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary flex-fill">
@@ -48,7 +50,11 @@ const Header = () => {
               </li>
             </ul>
             <Divider type="vertical"/>
-            <FontAwesomeIcon icon={faShoppingCart} className='text-primary'/>
+            <Link to='/cart'>
+              <Badge count={cart?.length} showZero size='small' >
+                <FontAwesomeIcon icon={faShoppingCart} className='text-primary'/>
+              </Badge>
+            </Link>
           </div>
         </div>
       </nav>

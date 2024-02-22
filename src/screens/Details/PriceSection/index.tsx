@@ -4,6 +4,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {currencyFormat} from "../../../utils";
 import {Button} from "antd";
+import {useAppDispatch} from "../../../store";
+import {addToCart, deleteCart} from "../../../store/slices/cart.slice.ts";
 
 interface Props {
   book: IBook
@@ -11,6 +13,12 @@ interface Props {
 
 const PriveSection: React.FC<Props> = ({book}) => {
   const [qty, setQty] = useState(1);
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart({item: book, qty: qty}))
+    // dispatch(deleteCart())
+
+  }
   return (
     <div className='bg-white mx-2 rounded'>
       <div className='p-3'>
@@ -36,7 +44,7 @@ const PriveSection: React.FC<Props> = ({book}) => {
             <Button type={'primary'} danger block>Mua</Button>
           </div>
           <div className='mt-3'>
-            <Button block> Thêm vào giỏ </Button>
+            <Button onClick={handleAddToCart} block> Thêm vào giỏ </Button>
           </div>
           <div className='mt-3 text-primary'>
             <Button block>Mua trước chả sau </Button>

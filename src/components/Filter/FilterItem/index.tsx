@@ -3,15 +3,15 @@ import React from "react";
 
 interface IFilterItemProps {
   section: any;
-  onChange: (val: any) => void
+  onChange?: (val: any) => void;
+  onClick?: (val : any) => void;
 }
 
-const FilterItem: React.FC<IFilterItemProps> = ({section, onChange}) => {
+const FilterItem: React.FC<IFilterItemProps> = ({section, onChange, onClick}) => {
 
 
   const renderItem = (item : any) => {
-    return <div style={{cursor: 'pointer'}}>
-
+    return <div onClick={() => onClick(item)} key={item.id} style={{cursor: 'pointer'}}>
       <span>{item?.text}</span>
     </div>
   }
@@ -23,7 +23,7 @@ const FilterItem: React.FC<IFilterItemProps> = ({section, onChange}) => {
         <Checkbox.Group style={{ width: '100%' }} options={section.data} onChange={onChange} />
       )}
       {section.id === 3 && (
-        section.data.map((item : number) => <div style={{cursor: 'pointer'}}>
+        section.data.map((item : number) => <div key={item} style={{cursor: 'pointer'}}>
           <Rate value={item} style={{fontSize: 8}} disabled />
           <span className='ms-2'>{`từ ${item} sao`}</span>
         </div>)

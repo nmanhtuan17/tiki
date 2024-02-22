@@ -1,9 +1,5 @@
-import {useState} from "react";
 
-export const useFilter = () => {
-  const [type, setType] = useState();
-  const [suplier, setSuplier] = useState();
-  const [rate, setRate] = useState();
+export const useFilterSection = () => {
 
   const sections = [
     {
@@ -11,20 +7,20 @@ export const useFilter = () => {
       title: 'Danh mục sản phẩm',
       data: [
         {
-          id: 1,
+          id: 320,
           text: 'English Books'
         },
         {
-          id: 2,
+          id: 316,
           text: 'Sách tiếng Việt'
         },
         {
-          id: 3,
-          text: 'Văn phòng phẩm'
+          id: 9,
+          text: 'Truyện đọc tiếng anh'
         },
         {
-          id: 4,
-          text: 'Quà lưu niệm'
+          id: 871,
+          text: 'Sách tư duy - kĩ năng sống'
         },
       ]
     },

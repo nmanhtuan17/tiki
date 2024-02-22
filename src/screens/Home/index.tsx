@@ -9,7 +9,7 @@ const Home = () => {
       <div className='col-lg-2 col-md-3'>
         <FilterSection />
       </div>
-      <div className='text-white row align-items-center col-lg-8 col-md-8'>
+      <div className='text-white row col-lg-8 col-md-8'>
         {books.map((item) => <BookItem key={item.id} image={item.images} book={item} />)}
       </div>
     </div>

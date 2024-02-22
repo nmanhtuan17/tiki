@@ -32,19 +32,19 @@ const footerData = [
   }
 ]
 const Footer = () => {
-  const renderItem = (text: string) => {
+  const renderItem = (text: string, index: number) => {
     return (
-      <div style={{color: colors.grey}}>{text}</div>
+      <div key={index} style={{color: colors.grey}}>{text}</div>
     )
   }
   return (
     <div className='bg-white'>
       <div className='row container mx-auto p-3 justify-content-between'>
-        {footerData.map(item => {
+        {footerData.map((item, index) => {
           return (
-            <div className='col col-lg-2'>
+            <div key={index} className='col col-lg-2'>
               <div className='fw-bold mb-2'>{item.title}</div>
-              {item.data.map(text => renderItem(text))}
+              {item.data.map((text, index) => renderItem(text, index))}
             </div>
           )
         })}

@@ -15,7 +15,7 @@ const RootLayout: React.FC = () => {
   return (
     <Layout>
       <Header/>
-      <Content className='h-full container' style={{padding: '0 48px'}}>
+      <Content className='h-full container mb-5' style={{padding: '0 48px'}}>
         <Breadcrumb style={{margin: '16px 0'}}>
           <Breadcrumb.Item>Trang chủ</Breadcrumb.Item>
           <Breadcrumb.Item>Nhà sách tiki</Breadcrumb.Item>

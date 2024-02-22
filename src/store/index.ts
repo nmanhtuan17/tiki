@@ -5,9 +5,11 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 import storage from 'redux-persist/lib/storage';
 import {appSlice, AppSliceState} from "./slices/app.slice.ts";
+import {cartSlice, CartSliceState} from "./slices/cart.slice.ts";
 
 export const reducers = combineReducers({
-  app: appSlice.reducer
+  app: appSlice.reducer,
+  cart: cartSlice.reducer
 })
 
 const persistConfig = {
@@ -32,7 +34,8 @@ const store = configureStore({
 const persistor = persistStore(store)
 
 export interface RootState {
-  app: AppSliceState
+  app: AppSliceState,
+  cart: CartSliceState
 }
 export const useAppDispatch = () => useDispatch()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

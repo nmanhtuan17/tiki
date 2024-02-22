@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getAllBooks} from "../actions/app.action.ts";
+import {filterBooks, getAllBooks} from "../actions/app.action.ts";
 
 export interface IBook {
   id: number | string;
@@ -33,7 +33,11 @@ const initialState: AppSliceState = {
 export const appSlice = createSlice({
   name: 'app',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setBooks: (state, action) => {
+      state.books = action.payload
+    }
+  },
   extraReducers: builder =>
     builder
       .addCase(getAllBooks.pending, (state) => {
@@ -46,5 +50,16 @@ export const appSlice = createSlice({
       .addCase(getAllBooks.rejected, (state) => {
         state.isLoading = false;
       })
-
+      .addCase(filterBooks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(filterBooks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.books = action.payload;
+      })
+      .addCase(filterBooks.rejected, (state) => {
+        state.isLoading = false;
+      })
 })
+
+export const {setBooks} = appSlice.actions
