@@ -1,23 +1,46 @@
 import {useFilterSection} from "../../hooks/useFilter.ts";
 import FilterItem from "./FilterItem";
-import {useAppDispatch, useAppSelector} from "../../store";
-import {filterBooks} from "../../store/actions/app.action.ts";
 
-const FilterSection = () => {
+interface Props {
+  setSeller: any;
+  setCate: any;
+  setRate: any;
+  cate: number;
+  rate: number;
+}
+
+const FilterSection: React.FC<Props> = ({setSeller, setRate, setCate, cate, rate}) => {
   const {sections} = useFilterSection();
-  const {books} = useAppSelector(state => state.app);
-  const dispatch = useAppDispatch();
   const onChange = (checkValue: any) => {
-    console.log(checkValue)
-
+    setSeller(checkValue);
   }
   const handleFilterCategories = (item) => {
-    console.log(item)
-    dispatch(filterBooks(item.id))
+    if (item.id === cate) {
+      setCate(null);
+      return;
+    }
+    setCate(item.id)
+  }
+
+  const handleFilterRate = (_rate) => {
+    if (rate === _rate) {
+      setRate(null)
+      return;
+    }
+    setRate(_rate)
   }
   return (
-    <div className='gap-3 bg-white p-2 px-4 rounded'>
-      {sections.map(item => <FilterItem key={item.id} section={item} onChange={onChange} onClick={handleFilterCategories}/>)}
+    <div className='gap-3 bg-white p-2 px-4 rounded mb-3'>
+      {sections.map(item =>
+        <FilterItem
+          key={item.id}
+          section={item}
+          onChange={onChange}
+          onClick={handleFilterCategories}
+          onClickRate={handleFilterRate}
+          cate={cate}
+          rate={rate}
+        />)}
     </div>
   )
 }

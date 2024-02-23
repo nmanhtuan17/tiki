@@ -30,19 +30,19 @@ export const useFilterSection = () => {
       data: [
         {
           label: 'Nhà sách Fahasa',
-          value: 'Nhà sách Fahasa'
+          value: 53660
         },
         {
           label: 'Bamboo Books',
-          value: 'Bamboo Books'
+          value: 281062
         },
         {
           label: 'Time Books',
-          value: 'Time Books'
+          value: 10684
         },
         {
           label: 'Nhà Sách Trẻ Online',
-          value: 'Nhà Sách Trẻ Online'
+          value: 1
         },
       ]
     },

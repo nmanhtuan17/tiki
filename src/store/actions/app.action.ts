@@ -13,14 +13,4 @@ export const getAllBooks = createAsyncThunk('app/getAll-book', async (_, thunkAP
 })
 
 
-export const filterBooks = createAsyncThunk('app/filter-book', async (id, thunkAPI) => {
-  try {
-    const {data} = await axios.get('https://86yfl7-8080.csb.app/books');
-    const books = data.filter(item => item.categories.id === id);
-    return books
-  } catch (e) {
-    console.log(e)
-    return thunkAPI.rejectWithValue(e);
-  }
-})
 

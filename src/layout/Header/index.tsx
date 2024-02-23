@@ -3,11 +3,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHome, faFaceSmileWink, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {Badge, Divider, Input} from "antd";
 import {colors} from "../../contants/theme/colors.ts";
-import {store, useAppSelector} from "../../store";
+import {useAppSelector} from "../../store";
 
 const Header = () => {
   const location = useLocation();
   const {cart} = useAppSelector(state => state.cart)
+
   return (
     <div className='d-flex'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary flex-fill">

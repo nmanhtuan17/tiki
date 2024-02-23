@@ -5,7 +5,7 @@ import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {currencyFormat} from "../../../utils";
 import {Button} from "antd";
 import {useAppDispatch} from "../../../store";
-import {addToCart, deleteCart} from "../../../store/slices/cart.slice.ts";
+import {addToCart} from "../../../store/slices/cart.slice.ts";
 
 interface Props {
   book: IBook
@@ -16,8 +16,6 @@ const PriveSection: React.FC<Props> = ({book}) => {
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
     dispatch(addToCart({item: book, qty: qty}))
-    // dispatch(deleteCart())
-
   }
   return (
     <div className='bg-white mx-2 rounded'>

@@ -46,10 +46,6 @@ const Cart = () => {
               <FontAwesomeIcon onClick={() => dispatch(removeFromCart(item.item.id))} icon={faXmark} />
             </div>
           </div>
-
-          {/*<div className='col col-lg-1'>*/}
-
-          {/*</div>*/}
         </div>
       )}
     />

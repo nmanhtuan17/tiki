@@ -1,16 +1,31 @@
 import {useAppSelector} from "../../store";
 import BookItem from "../../components/BookItem";
 import FilterSection from "../../components/Filter";
+import {useMemo, useState} from "react";
 
 const Home = () => {
   const {books} = useAppSelector(state => state.app);
+  const [cate, setCate] = useState();
+  const [seller, setSeller] = useState([])
+  const [rate, setRate] = useState<number>();
+
+
+  const filterBooks = useMemo(() => books.filter((item) => {
+    return (
+      (!cate || item.categories.id === cate) &&
+      (seller.length === 0 || seller.includes(item?.current_seller?.id)) &&
+      (!rate || item.rating_average >= rate)
+    );
+  }),[cate, seller, rate, books]);
+
+
   return (
     <div className='row justify-content-center'>
-      <div className='col-lg-2 col-md-3'>
-        <FilterSection />
+      <div className='col-lg-3 col-md-3'>
+        <FilterSection cate={cate} rate={rate} setCate={setCate} setSeller={setSeller} setRate={setRate} />
       </div>
       <div className='text-white row col-lg-8 col-md-8'>
-        {books.map((item) => <BookItem key={item.id} image={item.images} book={item} />)}
+        {filterBooks.map((item) => <BookItem key={item.id} image={item.images} book={item} />)}
       </div>
     </div>
   )
