@@ -21,13 +21,15 @@ export interface IBook {
 export interface AppSliceState {
   isLoading?: boolean,
   message?: string,
-  books: IBook[]
+  books: IBook[],
+  query: string
 }
 
 const initialState: AppSliceState = {
   isLoading: false,
   message: '',
-  books: []
+  books: [],
+  query: ''
 }
 
 export const appSlice = createSlice({
@@ -36,6 +38,9 @@ export const appSlice = createSlice({
   reducers: {
     setBooks: (state, action) => {
       state.books = action.payload
+    },
+    setQueryText: (state, action) => {
+      state.query = action.payload
     }
   },
   extraReducers: builder =>
@@ -52,4 +57,4 @@ export const appSlice = createSlice({
       })
 })
 
-export const {setBooks} = appSlice.actions
+export const {setBooks, setQueryText} = appSlice.actions

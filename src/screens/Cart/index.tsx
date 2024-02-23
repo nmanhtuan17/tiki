@@ -8,7 +8,7 @@ import {removeFromCart} from "../../store/slices/cart.slice.ts";
 const Cart = () => {
   const {cart} = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
-  console.log(cart)
+  console.log('cart', cart)
 
   return (
     <List

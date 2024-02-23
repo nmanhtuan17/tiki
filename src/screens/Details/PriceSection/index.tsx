@@ -5,7 +5,7 @@ import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons";
 import {currencyFormat} from "../../../utils";
 import {Button} from "antd";
 import {useAppDispatch} from "../../../store";
-import {addToCart} from "../../../store/slices/cart.slice.ts";
+import {addToCart, deleteCart} from "../../../store/slices/cart.slice.ts";
 
 interface Props {
   book: IBook

@@ -4,19 +4,21 @@ import FilterSection from "../../components/Filter";
 import {useMemo, useState} from "react";
 
 const Home = () => {
-  const {books} = useAppSelector(state => state.app);
+  const {books, query} = useAppSelector(state => state.app);
   const [cate, setCate] = useState();
   const [seller, setSeller] = useState([])
   const [rate, setRate] = useState<number>();
-
 
   const filterBooks = useMemo(() => books.filter((item) => {
     return (
       (!cate || item.categories.id === cate) &&
       (seller.length === 0 || seller.includes(item?.current_seller?.id)) &&
-      (!rate || item.rating_average >= rate)
+      (!rate || item.rating_average >= rate) &&
+      (item.name.toUpperCase().includes(query.toUpperCase()))
     );
-  }),[cate, seller, rate, books]);
+  }),[cate, seller, rate, books, query]);
+
+
 
 
   return (

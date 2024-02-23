@@ -3,12 +3,23 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHome, faFaceSmileWink, faMagnifyingGlass, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {Badge, Divider, Input} from "antd";
 import {colors} from "../../contants/theme/colors.ts";
-import {useAppSelector} from "../../store";
+import {useAppDispatch, useAppSelector} from "../../store";
+import {useEffect, useState} from "react";
+import {setQueryText} from "../../store/slices/app.slice.ts";
 
 const Header = () => {
   const location = useLocation();
   const {cart} = useAppSelector(state => state.cart)
-
+  const [query, setQuery] = useState('');
+  const dispatch = useAppDispatch();
+  const handleQuery = () => {
+    setTimeout(() => {
+      dispatch(setQueryText(query));
+    }, 400)
+  }
+  useEffect(() => {
+    handleQuery();
+  }, [query]);
   return (
     <div className='d-flex'>
       <nav className="navbar navbar-expand-lg bg-body-tertiary flex-fill">
@@ -26,6 +37,8 @@ const Header = () => {
           <div className="collapse navbar-collapse justify-content-between gap-3" id="navbarSupportedContent">
             <div className="d-flex flex-fill gap-3" role="search">
               <Input
+                onChange={(e) => setQuery(e.target.value)}
+                value={query}
                 placeholder=''
                 prefix={<FontAwesomeIcon icon={faMagnifyingGlass} color={colors.grey}/>}
                 suffix={
